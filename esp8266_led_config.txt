@@ -1,0 +1,29 @@
+AT+CWMODE_DEF=1 # set default mode to station.(saved to flash)
+# OK
+
+AT+CWJAP_DEF="<SSID>","<PASS>" # connect to WIFI ap
+#WIFI CONNECTED
+#WIFI GOT IP
+#OK
+
+AT+CWAUTOCONN=1 #autoconnect to ap after startup
+
+
+AT+CIPSTA? # get station info
+#+CIPSTA:ip:"192.168.1.5"
+#+CIPSTA:gateway:"192.168.1.1"
+#+CIPSTA:netmask:"255.255.255.0"
+#OK
+
+AT+CIPAPMAC_DEF="1a:fe:34:9a:48:b9" #set mac address
+#OK
+
+AT+CIPSTART="UDP","0",0,1302,2 # start udp reception
+#0,CONNECT
+#OK
+
+AT+SAVETRANSLINK=1,"192.168.6.110",1302,"UDP",1302 # save udp/ip config to flash
+
+AT+SAVETRANSLINK=0 # disable above command
+
+
